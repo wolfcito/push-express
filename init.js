@@ -24,14 +24,14 @@ function copyAllComponents(destination) {
   copyFiles(templateDir, path.join(destination, 'components'))
 }
 
-function addNotificationComponent(destination) {
+function addComponent(destination, componentName) {
   const templateDir = path.join(
     __dirname,
     'template',
     'components',
-    'push-notification'
+    componentName
   )
-  const destDir = path.join(destination, 'components', 'push-notification')
+  const destDir = path.join(destination, 'components', componentName)
   copyFiles(templateDir, destDir)
 }
 
@@ -42,12 +42,22 @@ const [, , command, component] = process.argv
 if (command === 'init') {
   console.log('Initializing all components...')
   copyAllComponents(process.cwd())
-} else if (command === 'add' && component === 'notification') {
-  console.log('Adding notification component...')
-  addNotificationComponent(process.cwd())
+} else if (command === 'add') {
+  if (
+    component === 'push-notification' ||
+    component === 'push-channel-suscribe-button'
+  ) {
+    console.log(`Adding ${component} component...`)
+    addComponent(process.cwd(), component)
+  } else {
+    console.error(
+      'Invalid component. Use "add push-notification" or "add push-channel-suscribe-button".'
+    )
+    process.exit(1) // Exit with a non-zero status code to indicate an error
+  }
 } else {
   console.error(
-    'Invalid command. Use "init" to initialize all components or "add notification" to add the notification component.'
+    'Invalid command. Use "init" to initialize all components or "add push-notification" or "add push-channel-suscribe-button" to add a specific component.'
   )
   process.exit(1) // Exit with a non-zero status code to indicate an error
 }
