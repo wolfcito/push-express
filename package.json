@@ -1,0 +1,22 @@
+{
+  "name": "wolfcito-push-components",
+  "version": "0.0.1",
+  "description": "push protocol implementations",
+  "bin": {
+    "wolfcito-push-components": "./init.js"
+  },
+  "main": "init.js",
+  "scripts": {
+    "init": "node init.js init",
+    "add:notification": "node init.js add notification"
+  },
+  "keywords": [
+    "push",
+    "protocol",
+    "blockchain",
+    "implementations",
+    "wolfcito"
+  ],
+  "author": "Luis Fernando Ushiña",
+  "license": "MIT"
+}
