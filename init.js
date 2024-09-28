@@ -14,7 +14,7 @@ function copyFiles(srcDir, destDir) {
       copyFiles(srcFile, destFile)
     } else {
       fs.copyFileSync(srcFile, destFile)
-      console.log(`Created: ${destFile}`)
+      console.log(`📂 Created: ${destFile}`)
     }
   })
 }
@@ -44,10 +44,12 @@ function addNotification(destination) {
   const serviceDest = path.join(destination, 'service', 'push-notification')
   copyFiles(serviceSrc, serviceDest)
 
-  console.log(`Notification component and service added successfully.`)
+  console.log('\n✨ Notification component and service added successfully!\n')
+  console.log('👉 Next Steps:')
   console.log(
-    'Please run "yarn install" or "npm install" to update dependencies.',
+    '   1. Run "yarn install" or "npm install" to install dependencies.',
   )
+  console.log('   2. Start your project with "npm run dev" or "yarn dev".\n')
 }
 
 // Parse command-line arguments
@@ -55,21 +57,21 @@ const [, , command, component] = process.argv
 
 // Validate and execute commands
 if (command === 'init') {
-  console.log('Initializing all components...')
+  console.log('✨ Initializing all components...\n')
   copyAllComponents(process.cwd())
 } else if (command === 'add') {
   if (component === 'notification') {
-    console.log(`Adding ${component} component...`)
+    console.log('✨ Adding notification component...\n')
     addNotification(process.cwd())
   } else {
     console.error(
-      'Invalid component. Use "add notification" or "add push-channel-suscribe-button".',
+      '\n❌ Invalid component. Use "add notification" or "add push-channel-suscribe-button".\n',
     )
     process.exit(1) // Exit with a non-zero status code to indicate an error
   }
 } else {
   console.error(
-    'Invalid command. Use "init" to initialize all components or "add notification" or "add push-channel-suscribe-button" to add a specific component.',
+    '\n❌ Invalid command. Use "init" or "add notification" or "add push-channel-suscribe-button".\n',
   )
   process.exit(1) // Exit with a non-zero status code to indicate an error
 }
