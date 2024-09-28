@@ -1,5 +1,12 @@
-import React from 'react'
+import { useEffect } from 'react'
+import { initializeUser } from '../services/pushNotificationService'
 
-export const pushNotificacion = () => {
-  return <div>Work in progress</div>
+const PushNotificationComponent = () => {
+  useEffect(() => {
+    initializeUser()
+  }, [])
+
+  return <div>Push Notification Initialized!</div>
 }
+
+export default PushNotificationComponent
