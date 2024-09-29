@@ -52,7 +52,7 @@ function addNotification(destination, fileType) {
   )
   console.log('🚀 Next Steps:')
   console.log(
-    '   1. Run `yarn add @pushprotocol/restapi ethers && yarn install` or `yarn add @pushprotocol/restapi ethers && yarn install` to install dependencies.',
+    '   1. Run `npm install @pushprotocol/restapi@latest ethers@^5.7` to install dependencies.',
   )
   console.log('   2. Start your project with `npm run dev` or `yarn dev`.\n')
 }
@@ -90,13 +90,13 @@ if (command === 'init') {
     })
   } else {
     console.error(
-      '\n❌ Invalid component. Use "add notification" or "add push-channel-suscribe-button".\n',
+      '\n❌ Invalid component. Use "add notification" or "add chat".\n',
     )
     process.exit(1)
   }
 } else {
   console.error(
-    '\n❌ Invalid command. Use "init" or "add notification" or "add push-channel-suscribe-button".\n',
+    '\n❌ Invalid command. Use "init" or "add notification" or "add chat".\n',
   )
   process.exit(1)
 }
