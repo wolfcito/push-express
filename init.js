@@ -129,14 +129,10 @@ if (command === 'init') {
       addNotification(process.cwd(), fileType)
     })
   } else {
-    console.error(
-      '\n❌ Invalid component. Use "add notification" or "add chat".\n',
-    )
+    console.error('\n❌ Invalid component. Use "add notification".\n')
     process.exit(1)
   }
 } else {
-  console.error(
-    '\n❌ Invalid command. Use "init" or "add notification" or "add chat".\n',
-  )
+  console.error('\n❌ Invalid command. Use "init" or "add notification".\n')
   process.exit(1)
 }

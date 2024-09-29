@@ -1,9 +1,9 @@
 {
-  "name": "wolfcito-push-components",
-  "version": "0.0.3",
-  "description": "push protocol implementations",
+  "name": "push-express",
+  "version": "0.0.1",
+  "description": "push protocol implementations express",
   "bin": {
-    "wolfcito-push-components": "./init.js"
+    "push-express": "./init.js"
   },
   "main": "init.js",
   "scripts": {
@@ -15,6 +15,7 @@
     "protocol",
     "blockchain",
     "implementations",
+    "components",
     "wolfcito"
   ],
   "author": "Luis Fernando Ushiña",

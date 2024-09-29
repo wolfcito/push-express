@@ -310,13 +310,6 @@
   "resolved" "https://registry.npmjs.org/undici-types/-/undici-types-6.19.8.tgz"
   "version" "6.19.8"
 
-"wolfcito-push-components@file:":
-  "resolved" "file:"
-  "version" "0.0.3"
-  dependencies:
-    "inquirer" "^11.1.0"
-    "wolfcito-push-components" "file:"
-
 "wrap-ansi@^6.2.0":
   "integrity" "sha512-r6lPcBGxZXlIcymEu7InxDMhdW0KDxpLgoFLcguasxCaJ/SOIZwINatK9KY/tf+ZrlywOKU0UDj3ATXUBfxJXA=="
   "resolved" "https://registry.npmjs.org/wrap-ansi/-/wrap-ansi-6.2.0.tgz"
