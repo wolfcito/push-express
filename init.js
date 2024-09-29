@@ -3,7 +3,7 @@ const fs = require('fs')
 const path = require('path')
 const inquirer = require('inquirer').createPromptModule()
 
-function copyFiles(srcDir, destDir) {
+const copyFiles = (srcDir, destDir) => {
   if (!fs.existsSync(destDir)) {
     fs.mkdirSync(destDir, { recursive: true })
   }
@@ -20,7 +20,7 @@ function copyFiles(srcDir, destDir) {
   })
 }
 
-function addNotification(destination, fileType) {
+const addNotification = (destination, fileType) => {
   const ext = fileType === 'ts' ? 'ts' : 'js'
 
   const componentsSrc = path.join(
@@ -56,14 +56,11 @@ function addNotification(destination, fileType) {
   console.log(
     `\n✅ Notification component and service added successfully with ${fileType.toUpperCase()}!\n`,
   )
-  console.log('🚀 Next Steps:')
-  console.log(
-    '   1. Run `npm install @pushprotocol/restapi@latest ethers@^5.7` to install dependencies.',
-  )
-  console.log('   2. Start your project with `npm run dev` or `yarn dev`.\n')
+
+  askPackageManager()
 }
 
-function askFileType(callback) {
+const askFileType = (callback) => {
   inquirer([
     {
       type: 'list',
@@ -77,6 +74,43 @@ function askFileType(callback) {
     },
   ]).then((answers) => {
     callback(answers.fileType)
+  })
+}
+
+const askPackageManager = () => {
+  inquirer([
+    {
+      type: 'list',
+      name: 'packageManager',
+      message: 'How would you like to install dependencies?',
+      choices: [
+        { name: 'Yarn', value: 'yarn' },
+        { name: 'NPM', value: 'npm' },
+        { name: 'Manual', value: 'manual' },
+      ],
+    },
+  ]).then((answers) => {
+    const { packageManager } = answers
+    if (packageManager === 'yarn') {
+      console.log('\n🚀 Installing dependencies using Yarn...')
+      console.log('🛠️  yarn add @pushprotocol/restapi@latest ethers@^5.7\n')
+      require('child_process').execSync(
+        'yarn add @pushprotocol/restapi@latest ethers@^5.7',
+        { stdio: 'inherit' },
+      )
+    } else if (packageManager === 'npm') {
+      console.log('\n🚀 Installing dependencies using NPM...')
+      console.log('🛠️  npm install @pushprotocol/restapi@latest ethers@^5.7\n')
+      require('child_process').execSync(
+        'npm install @pushprotocol/restapi@latest ethers@^5.7',
+        { stdio: 'inherit' },
+      )
+    } else {
+      console.log(
+        '\n🛠️  Manual installation selected. Run the following command to install dependencies:',
+      )
+      console.log('npm install @pushprotocol/restapi@latest ethers@^5.7')
+    }
   })
 }
 
