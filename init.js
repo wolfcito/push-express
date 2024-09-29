@@ -117,10 +117,7 @@ const askPackageManager = () => {
 // Parse command-line arguments
 const [, , command, component] = process.argv
 
-if (command === 'init') {
-  console.log('✨ Initializing all components...\n')
-  copyAllComponents(process.cwd())
-} else if (command === 'add') {
+if (command === 'add') {
   if (component === 'notification') {
     askFileType((fileType) => {
       console.log(
@@ -133,6 +130,6 @@ if (command === 'init') {
     process.exit(1)
   }
 } else {
-  console.error('\n❌ Invalid command. Use "init" or "add notification".\n')
+  console.error('\n❌ Invalid command. Use "add notification".\n')
   process.exit(1)
 }
