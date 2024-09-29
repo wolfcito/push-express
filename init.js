@@ -32,6 +32,7 @@ function addNotification(destination, fileType) {
   )
   const componentsDest = path.join(
     destination,
+    'src',
     'components',
     'push-notification',
   )
@@ -44,7 +45,12 @@ function addNotification(destination, fileType) {
     'push-notification',
     ext,
   )
-  const serviceDest = path.join(destination, 'service', 'push-notification')
+  const serviceDest = path.join(
+    destination,
+    'src',
+    'service',
+    'push-notification',
+  )
   copyFiles(serviceSrc, serviceDest)
 
   console.log(
