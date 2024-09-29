@@ -18,5 +18,8 @@
     "wolfcito"
   ],
   "author": "Luis Fernando Ushiña",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "inquirer": "^11.1.0"
+  }
 }

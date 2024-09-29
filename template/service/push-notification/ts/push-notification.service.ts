@@ -1,7 +1,7 @@
 import { PushAPI, CONSTANTS } from '@pushprotocol/restapi'
 import { ethers } from 'ethers'
 
-export const initializeUser = async (walletAddress: string) => {
+export const sendNotification = async (walletAddress: string) => {
   const signer = ethers.Wallet.createRandom()
 
   const userAlice = await PushAPI.initialize(signer, {

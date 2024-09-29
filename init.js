@@ -1,12 +1,7 @@
 #!/usr/bin/env node
 const fs = require('fs')
 const path = require('path')
-const readline = require('readline')
-
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout,
-})
+const inquirer = require('inquirer').createPromptModule()
 
 function copyFiles(srcDir, destDir) {
   if (!fs.existsSync(destDir)) {
@@ -57,27 +52,26 @@ function addNotification(destination, fileType) {
   )
   console.log('🚀 Next Steps:')
   console.log(
-    '   1. Run `yarn install` or `npm install` to install dependencies.',
+    '   1. Run `yarn add @pushprotocol/restapi ethers && yarn install` or `yarn add @pushprotocol/restapi ethers && yarn install` to install dependencies.',
   )
   console.log('   2. Start your project with `npm run dev` or `yarn dev`.\n')
 }
 
-// Preguntar si quiere JS o TS, con un valor por defecto si no responde (presiona Enter)
 function askFileType(callback) {
-  rl.question(
-    '🛠️ Would you like to use JavaScript (js) or TypeScript (ts)? [Default: ts] ',
-    (answer) => {
-      const fileType =
-        answer.trim().toLowerCase() === '' ? 'ts' : answer.toLowerCase()
-      if (fileType === 'js' || fileType === 'ts') {
-        callback(fileType)
-      } else {
-        console.log('Invalid option, defaulting to TypeScript (ts).')
-        callback('ts')
-      }
-      rl.close()
+  inquirer([
+    {
+      type: 'list',
+      name: 'fileType',
+      message: 'Would you like to use JavaScript or TypeScript?',
+      choices: [
+        { name: 'TypeScript (Default)', value: 'ts' },
+        { name: 'JavaScript', value: 'js' },
+      ],
+      default: 'ts',
     },
-  )
+  ]).then((answers) => {
+    callback(answers.fileType)
+  })
 }
 
 // Parse command-line arguments
