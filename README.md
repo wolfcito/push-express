@@ -102,6 +102,9 @@ Contributions are welcome! If you want to contribute to **Push Express**, follow
 4. Push to the branch (`git push origin feature/new-feature`).
 5. Open a pull request.
 
+> ⚠️ Warning:
+> The code within this repository is provided without any warranties. It is important to note that the code has not been audited for potential security vulnerabilities. Using this code could potentially lead to loss of funds, compromised data, or asset risk. Exercise caution and use this code at your own risk. Please refer to the LICENSE file for details about the terms and conditions.
+
 ## License
 
 This project is licensed under the MIT license. For more information, check the [LICENSE](LICENSE) file.
